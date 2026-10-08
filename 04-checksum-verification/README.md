@@ -54,6 +54,9 @@ The official SHA-256 checksum of the ISO file was published on the vendor's webs
 ```text
 echo "<official_sha256_checksum>" > SHA256.txt
 ```
+![File_Hash](Screenshots/File_Hash.jpg)
+
+![Save_Hash](Screenshots/Save_Hash.jpg)
 
 Step 2: Compute the File's Checksum (CLI)
 
@@ -85,6 +88,8 @@ Compared both files:
 diff -qs My_SHA256.txt SHA256.txt
 ```
 
+![Check_Hash](Screenshots/Check_Hash.jpg)
+
 Command breakdown:
 
 Flag Meaning
@@ -100,6 +105,14 @@ As an alternative method, I used GtkHash, a free desktop utility for computing c
 1. Loaded the ISO file into GtkHash.
 2. Pasted the official SHA-256 checksum into the "Check" field.
 3. Clicked Hash.
+
+![GtkHash](Screenshots/GtkHash.jpg)
+
+![File](Screenshots/File.jpg)
+
+![Hash](Screenshots/Hash.jpg)
+
+![Check](Screenshots/Check.jpg)
 
 Result: Green checkmarks appeared, confirming the checksum matched.
 
