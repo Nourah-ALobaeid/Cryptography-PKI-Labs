@@ -40,7 +40,7 @@ The goal is to demonstrate practical understanding of how cryptography protects 
 - sha256sum / GtkHash
 - IIS Manager (Windows Server 2019)
 - Python 3 (http.server)
-- Linux (Ubuntu)
+- Linux
 
 ---
 
