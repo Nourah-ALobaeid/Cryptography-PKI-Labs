@@ -61,16 +61,20 @@ HTTPS encrypts communication between the client and the server using TLS. This p
 Accessed the default IIS website over HTTP:
 
 ```text
-http://myine.lab.local
+http://lab.local
 ```
+
+![webpage](Screenshots/webpage.jpg)
 
 The site loaded successfully, confirming IIS was running.
 
 Attempted to access the same site over HTTPS:
 
 ```text
-https://myine.lab.local
+https://lab.local
 ```
+
+![error](Screenshots/error.jpg)
 
 The site failed to load, because no certificate was bound to port 443.
 
@@ -83,6 +87,12 @@ Step 2: Create a Self-Signed Certificate
 5. Provided a friendly name for the certificate.
 6. Confirmed creation — the certificate was valid for one year.
 
+![IIS](Screenshots/IIS.jpg)
+
+![cert](Screenshots/cert.jpg)
+
+![certadd](Screenshots/certadd.jpg)
+
 Step 3: Bind the Certificate to the Website
 
 1. Expanded Sites and selected Default Web Site.
@@ -92,6 +102,12 @@ Step 3: Bind the Certificate to the Website
 5. Chose the newly created self-signed certificate from the SSL certificate dropdown.
 6. Clicked OK.
 
+![settings](Screenshots/settings.jpg)
+
+![site](Screenshots/site.jpg)
+
+![sites](Screenshots/sites.jpg)
+
 A new binding on port 443 was created.
 
 Step 4: Test HTTPS Access
@@ -99,8 +115,10 @@ Step 4: Test HTTPS Access
 Accessed the site again:
 
 ```text
-https://myine.lab.local
+https://lab.local
 ```
+
+![webcert](Screenshots/webcert.jpg)
 
 The site loaded successfully over HTTPS. I clicked the padlock icon in the browser to view the certificate details.
 
@@ -111,6 +129,8 @@ To verify this, I ran the following PowerShell command:
 ```powershell
 (Get-ChildItem -Path Cert:\LocalMachine\Root).FriendlyName
 ```
+
+![allcert](Screenshots/allcert.jpg)
 
 The self-signed certificate appeared in the list.
 
