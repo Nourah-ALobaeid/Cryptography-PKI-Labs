@@ -51,19 +51,8 @@ Salting adds a random value to the input before hashing. This ensures that even 
 
 ## Methodology
 
-### Step 1: Verify OpenSSL Installation
 
-Checked that OpenSSL was installed on the system.
-
-### Step 2: List Available Digest Commands
-
-Listed all supported hash functions:
-
-```text
-openssl list --digest-commands
-```
-
-Step 3: Generate File Hashes
+### Step 1: Generate File Hashes
 
 Generated hashes of the same file using different algorithms:
 
@@ -75,9 +64,19 @@ openssl dgst -sha512 confidential-data.txt
 openssl dgst -sha3-256 confidential-data.txt
 ```
 
+![MD5](Screenshots/MD5.jpg)
+
+![RIPEMD160](Screenshots/RIPEMD160.jpg)
+
+![SHA256](Screenshots/SHA256.jpg)
+
+![SHA512](Screenshots/SHA512.jpg)
+
+![SHA3-256](Screenshots/SHA3-256.jpg)
+
 Each command produced a different hash value of different lengths, confirming the unique properties of each algorithm.
 
-Step 4: Generate a Random Salt
+### Step 2: Generate a Random Salt
 
 Created a random base64-encoded salt:
 
@@ -85,13 +84,17 @@ Created a random base64-encoded salt:
 openssl rand -base64 32
 ```
 
-Step 5: Hash a Password with Salt
+![salt](Screenshots/salt.jpg)
+
+### Step 3: Hash a Password with Salt
 
 Used SHA-512-based password hashing with the generated salt:
 
 ```text
 openssl passwd -6 -salt <salt_value> 'Tio3tPLr&m4'
 ```
+
+![salted](Screenshots/salted.jpg)
 
 Output format: $id$salt$hash
 
