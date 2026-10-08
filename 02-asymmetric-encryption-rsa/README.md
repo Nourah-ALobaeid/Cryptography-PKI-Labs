@@ -54,6 +54,8 @@ RSA is one of the most widely used public-key cryptosystems. It was named after 
 
 Checked that OpenSSL was installed on both machines.
 
+![setup](Screenshots/setup.png)
+
 ### Step 2: Generate Alice's RSA Key Pair
 
 On Alice's machine, generated a 2048-bit RSA private key:
@@ -62,11 +64,15 @@ On Alice's machine, generated a 2048-bit RSA private key:
 openssl genrsa -out alice-private-key.pem 2048
 ```
 
+![Alice_private](Screenshots/Alice_private.png)
+
 Derived the corresponding public key from the private key:
 
 ```text
 openssl rsa -pubout -in alice-private-key.pem -out alice-public-key.pem
 ```
+
+![Alice_public](Screenshots/Alice_public.png)
 
 Step 3: Generate Bob's RSA Key Pair
 
@@ -84,12 +90,14 @@ To transfer Bob's public key to Alice, I started a simple HTTP server on Bob's m
 ```text
 python3 -m http.server 8080
 ```
+![connection](Screenshots/connection.png)
 
 Then, from Alice's machine, I fetched Bob's public key:
 
 ```text
 curl http://<Bob_IP>:8080/bob-public-key.pem -o bob-public-key.pem
 ```
+![Bob_public](Screenshots/Bob_public.png)
 
 Step 5: Encrypt the File Using Bob's Public Key
 
@@ -98,6 +106,7 @@ On Alice's machine, encrypted the confidential file using Bob's public key:
 ```text
 openssl pkeyutl -encrypt -in confidential-data.txt -inkey bob-public-key.pem -pubin -out encrypted.bin
 ```
+![encryption](Screenshots/encryption.png)
 
 Command breakdown:
 
@@ -129,6 +138,8 @@ On Bob's machine, decrypted the file using his private key:
 ```text
 openssl pkeyutl -decrypt -in encrypted.bin -inkey bob-private-key.pem -out decrypted.txt
 ```
+
+![decryption](Screenshots/decryption.png)
 
 Verified the contents matched the original file.
 
