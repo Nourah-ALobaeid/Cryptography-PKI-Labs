@@ -59,6 +59,8 @@ Checked that OpenSSL was installed and available on the system.
 
 Listed the supported ciphers to confirm that AES-256-CBC was available.
 
+![openssl](Screenshots/openssl.png)
+
 ### Step 3: Encrypt the Text File
 
 Used OpenSSL to encrypt the confidential text file with AES-256-CBC and PBKDF2:
@@ -78,6 +80,8 @@ Flag Meaning
 
 I was prompted for a password, which was used to derive the actual encryption key.
 
+![encryption](Screenshots/encryption.png)
+
 Step 4: Verify Encryption
 
 Attempted to view the encrypted file:
@@ -85,6 +89,8 @@ Attempted to view the encrypted file:
 ```text
 cat encrypted_file.enc
 ```
+
+![encrypted_data](Screenshots/encrypted_data.png)
 
 The output was unreadable, confirming that the data was successfully encrypted.
 
@@ -100,6 +106,8 @@ Key difference: The -d flag specifies decryption.
 
 I entered the same password used during encryption, and the file was successfully decrypted.
 
+![decryption](Screenshots/decryption.png)
+
 Step 6: Verify Decryption
 
 Compared the decrypted file with the original:
@@ -108,36 +116,35 @@ Compared the decrypted file with the original:
 cat decrypted_file.txt
 ```
 
+![decrypted_data](Screenshots/decrypted_data.png)
+
+![secret_data](Screenshots/secret_data.png)
+
 The contents matched the original file, confirming that encryption and decryption worked correctly.
 
 ---
 
 Key Observations
 
-· The salt and IV are randomly generated each time, so encrypting the same file twice produces different ciphertext.
-· The password is not the encryption key itself — it is used to derive the key via PBKDF2.
-· Without the correct password, the data cannot be decrypted.
-· The -p flag is helpful for learning, but in production, printing the key and IV is a security risk.
+- The salt and IV are randomly generated each time, so encrypting the same file twice produces different ciphertext.
+- The password is not the encryption key itself — it is used to derive the key via PBKDF2.
+- Without the correct password, the data cannot be decrypted.
+- The -p flag is helpful for learning, but in production, printing the key and IV is a security risk.
 
----
-
-Screenshots
-
-(Add your screenshots here — e.g., encryption command, encrypted file content, decryption command, decrypted file content.)
 
 ---
 
 Lessons Learned
 
-· Symmetric encryption is fast and efficient but requires secure key exchange.
-· Salt, IV, and PBKDF2 are essential for strengthening password-based encryption.
-· OpenSSL is a powerful and flexible tool for cryptographic operations.
-· Proper key management is critical — losing the password means losing the data.
+- Symmetric encryption is fast and efficient but requires secure key exchange.
+- Salt, IV, and PBKDF2 are essential for strengthening password-based encryption.
+- OpenSSL is a powerful and flexible tool for cryptographic operations.
+- Proper key management is critical — losing the password means losing the data.
 
 ---
 
 Tools Used
 
-· OpenSSL
-· Linux
-· Terminal
+- OpenSSL
+- Linux
+- Terminal
